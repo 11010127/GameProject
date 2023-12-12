@@ -96,7 +96,7 @@ class Game1 : AppCompatActivity(), SensorEventListener {
             val z:Double=(p0.values[2].toDouble()/SensorManager.GRAVITY_EARTH).pow(2.0)
             val A= sqrt(x+y+z)
             if (A>max) max=A
-            if(max>1.2) {
+            if(max>1.5) {
                 binding.img4.setImageResource(R.drawable.fall)
 
                 binding.img4.setOnTouchListener { _, event ->

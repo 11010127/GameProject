@@ -88,7 +88,7 @@ class Game2 : AppCompatActivity(), SensorEventListener {
 
     override fun onSensorChanged(p0: SensorEvent?) {
         if (p0?.sensor?.type==Sensor.TYPE_LIGHT){
-            if (p0.values[0]>20000){
+            if (p0.values[0]>800){
                 binding2.img1.setImageResource(R.drawable.melt)
                 binding2.img4.setImageResource(R.drawable.melt)
                 binding2.img2.setImageResource(R.drawable.melt)
