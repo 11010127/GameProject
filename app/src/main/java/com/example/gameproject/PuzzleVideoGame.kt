@@ -17,7 +17,7 @@ class PuzzleVideoGame : AppCompatActivity() {
         binding= ActivityPuzzleVideoGameBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.btn1.setOnClickListener {
-            Intent(this,MainActivity::class.java).apply {
+            Intent(this,Game1::class.java).apply {
                 startActivity(this)
             }
         }
