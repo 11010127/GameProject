@@ -4,10 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FAF6F0"
     android:orientation="vertical"
-    tools:context=".Game1">
-
+    android:background="#FAF6F0"
+    tools:context=".Game2">
     <Space
         android:layout_width="match_parent"
         android:layout_height="72dp" />
@@ -16,7 +15,7 @@
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/p1"
+        android:text="@string/p2"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="34sp"
@@ -37,14 +36,14 @@
             android:layout_width="426dp"
             android:layout_height="150dp"
             android:layout_weight="1"
-            android:src="@drawable/stand" />
+            android:src="@drawable/icecream" />
 
         <ImageView
             android:id="@+id/img2"
             android:layout_width="426dp"
             android:layout_height="150dp"
             android:layout_weight="1"
-            android:src="@drawable/stand" />
+            android:src="@drawable/icecream" />
     </LinearLayout>
 
     <Space
@@ -62,16 +61,20 @@
             android:layout_width="426dp"
             android:layout_height="150dp"
             android:layout_weight="1"
-            android:src="@drawable/stand" />
+            android:src="@drawable/icecream" />
 
         <ImageView
             android:id="@+id/img4"
             android:layout_width="426dp"
             android:layout_height="150dp"
             android:layout_weight="1"
-            android:src="@drawable/stand" />
+            android:src="@drawable/icecream" />
 
     </LinearLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="40dp" />
 
     <LinearLayout
         android:layout_width="match_parent"

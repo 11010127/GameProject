@@ -22,7 +22,7 @@ class PuzzleVideoGame : AppCompatActivity() {
             }
         }
         binding.btn2.setOnClickListener {
-            Intent(this,MainActivity::class.java).apply {
+            Intent(this,Game2::class.java).apply {
                 startActivity(this)
             }
         }
