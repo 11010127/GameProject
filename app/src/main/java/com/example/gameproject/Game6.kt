@@ -63,7 +63,7 @@ class Game6 : AppCompatActivity(), SensorEventListener {
                 binding.imageView.setImageResource(R.drawable.night1)
                 binding.imageView.setOnTouchListener { _, event ->
                     if (event.action == MotionEvent.ACTION_DOWN) {
-                        Intent(this,Game6::class.java).apply {
+                        Intent(this,Game7::class.java).apply {
                             startActivity(this)
                         }
                     }

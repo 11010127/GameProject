@@ -15,6 +15,9 @@
         android:theme="@style/Theme.GameProject"
         tools:targetApi="31">
         <activity
+            android:name=".Game7"
+            android:exported="false" />
+        <activity
             android:name=".Game6"
             android:exported="false" />
         <activity
