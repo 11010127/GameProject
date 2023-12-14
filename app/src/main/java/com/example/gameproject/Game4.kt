@@ -80,7 +80,7 @@ class Game4 : AppCompatActivity(), SensorEventListener {
             val y: Double = (p0.values[1].toDouble() / SensorManager.GRAVITY_EARTH).pow(2.0)
             val z: Double = (p0.values[2].toDouble() / SensorManager.GRAVITY_EARTH).pow(2.0)
             val A = sqrt(x + y + z)
-            if (A > 1.2 && ligmax==800.0) {
+            if (A > 1.5 && ligmax==800.0) {
                 binding.imageView.setImageResource(R.drawable.awake)
                 binding.imageView.setOnTouchListener { _, event ->
                     if (event.action == MotionEvent.ACTION_DOWN) {

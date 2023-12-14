@@ -150,10 +150,12 @@ class Game3 : AppCompatActivity(), LocationListener {
         Log.d("myTag", "??"+p0.latitude.toString()+p0.longitude.toString())
 //        緯度範圍：25.021055628076443 到 25.02121638064911
 //        經度範圍：121.46517663348575 到 121.46522059134752
-        if(lat>37&&lat<38){
-         if(long>-123&&long<-121){
-        //if(lat>25.02107915607039&&lat<25.02121638064911){
-           // if(long>121.46517663348575&&long<121.46522059134752){
+        //if(lat>37&&lat<38){
+         //if(long>-123&&long<-121){
+       // if(lat>25&&lat<26){
+            //if(long>121&&long<122){
+        if(lat>25.020508162721168&&lat<25.021692944469446&&long>121.46195414533585&&long<121.46530506938743){
+
                 //if(long>-123&&long<-121){
                 //  if(lat>37&&lat<38){
                 //binding3.textView.text=p0.latitude.toString()+p0.longitude.toString()
@@ -176,7 +178,7 @@ class Game3 : AppCompatActivity(), LocationListener {
                     }
                     true
                 }
-            }
+
         }
 
 
