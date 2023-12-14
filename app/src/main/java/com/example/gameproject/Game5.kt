@@ -8,6 +8,7 @@ import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.MotionEvent
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -21,6 +22,7 @@ class Game5 : AppCompatActivity(), SensorEventListener {
     private lateinit var accsensor: Sensor
     private var isStarted:Boolean=false
     private var max=0.0
+    private var AA=0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding=ActivityGame5Binding.inflate(layoutInflater)
@@ -65,31 +67,28 @@ class Game5 : AppCompatActivity(), SensorEventListener {
             val y:Double=(p0.values[1].toDouble()/SensorManager.GRAVITY_EARTH).pow(2.0)
             val z:Double=(p0.values[2].toDouble()/SensorManager.GRAVITY_EARTH).pow(2.0)
             val A= sqrt(x+y+z)
-            if (A>max) max=A
-        }
-
-        if(max>1.5) {
-            binding.imgPeople.setImageResource(R.drawable.earthquake)
-
-            binding.imgCard.setOnTouchListener { _, event ->
-                if (event.action == MotionEvent.ACTION_DOWN) {
-                    //binding.imgPeople.setImageResource(R.drawable.onecards)
-                    binding.imgMe.setImageResource(R.drawable.endcard)
-                    binding.imgMe.setOnTouchListener { _, even ->
-                        if (event.action==MotionEvent.ACTION_DOWN){
-                            Intent(this,Game6::class.java).apply {
-                                startActivity(this)
+            if (A>1.5){
+                binding.imgPeople.setImageResource(R.drawable.earthquake)
+                binding.imgCard.setOnTouchListener { _, event ->
+                    if (event.action == MotionEvent.ACTION_DOWN) {
+                        binding.imgPeople.setImageResource(R.drawable.onecards)
+                        binding.imgMe.setImageResource(R.drawable.endcard)
+                        binding.imgMe.setOnTouchListener { _, even ->
+                            if (event.action==MotionEvent.ACTION_DOWN){
+                                Intent(this,Game6::class.java).apply {
+                                    startActivity(this)
+                                }
                             }
+                            true
                         }
-                        true
                     }
+                    true
                 }
-                true
             }
         }
     }
 
     override fun onAccuracyChanged(p0: Sensor?, p1: Int) {
-        TODO("Not yet implemented")
+        //TODO("Not yet implemented")
     }
 }
