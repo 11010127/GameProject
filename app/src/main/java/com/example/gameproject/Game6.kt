@@ -59,7 +59,7 @@ class Game6 : AppCompatActivity(), SensorEventListener {
     }
     override fun onSensorChanged(p0: SensorEvent?) {
         if (p0?.sensor?.type==Sensor.TYPE_LIGHT){
-            if (p0.values[0]<10){
+            if (p0.values[0]<1){
                 binding.imageView.setImageResource(R.drawable.night1)
                 binding.imageView.setOnTouchListener { _, event ->
                     if (event.action == MotionEvent.ACTION_DOWN) {
