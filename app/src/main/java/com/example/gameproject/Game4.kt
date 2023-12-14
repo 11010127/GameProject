@@ -8,6 +8,7 @@ import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import android.os.Bundle
+import android.util.Log
 import android.view.MotionEvent
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -25,6 +26,8 @@ class Game4 : AppCompatActivity(), SensorEventListener {
     private var isStarted:Boolean=false
     private var max=0.0
     private var ligmax=0.0
+    private var AA=0
+    private var BB=0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding= ActivityGame4Binding.inflate(layoutInflater)
@@ -77,20 +80,23 @@ class Game4 : AppCompatActivity(), SensorEventListener {
         }
 
         if(ligmax>800) {
+            ligmax=800.0
             binding.imageView.setImageResource(R.drawable.bright)
-            if (max > 1.5) {
-                binding.imageView.setImageResource(R.drawable.awake)
-                    binding.imageView.setOnTouchListener { _, event ->
-                        if (event.action == MotionEvent.ACTION_DOWN) {
-                            Intent(this,Game5::class.java).apply {
-                                startActivity(this)
-                            }
-                            Toast.makeText(this@Game4, "第五關", Toast.LENGTH_LONG).show()
-                        }
-                        true
+        }
+        if (max > 1.2 && ligmax==800.0) {
+            binding.imageView.setImageResource(R.drawable.awake)
+            binding.imageView.setOnTouchListener { _, event ->
+                if (event.action == MotionEvent.ACTION_DOWN) {
+//                    binding.imageView.setImageResource(R.drawable.)
+                    Intent(this,Game5::class.java).apply {
+                        startActivity(this)
                     }
+                    Toast.makeText(this@Game4, "第五關", Toast.LENGTH_LONG).show()
+                }
+                true
             }
         }
+
     }
 
 
