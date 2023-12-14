@@ -71,7 +71,7 @@ class Game7 : AppCompatActivity() {
            binding.imageView.setImageResource(R.drawable.happybirthday)
            binding.imageView.setOnTouchListener { _, event ->
                if (event.action == MotionEvent.ACTION_DOWN) {
-                   Intent(this,Game1::class.java).apply {
+                   Intent(this,Game8::class.java).apply {
                        startActivity(this)
                    }
                }
