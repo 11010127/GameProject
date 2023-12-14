@@ -41,6 +41,11 @@ class PuzzleVideoGame : AppCompatActivity() {
                 startActivity(this)
             }
         }
+        binding.btn6.setOnClickListener {
+            Intent(this,Game6::class.java).apply {
+                startActivity(this)
+            }
+        }
     }
 
 }

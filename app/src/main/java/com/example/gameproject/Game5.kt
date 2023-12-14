@@ -77,7 +77,7 @@ class Game5 : AppCompatActivity(), SensorEventListener {
                     binding.imgMe.setImageResource(R.drawable.endcard)
                     binding.imgMe.setOnTouchListener { _, even ->
                         if (event.action==MotionEvent.ACTION_DOWN){
-                            Intent(this,Game1::class.java).apply {
+                            Intent(this,Game6::class.java).apply {
                                 startActivity(this)
                             }
                         }
