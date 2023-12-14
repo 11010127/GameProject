@@ -23,18 +23,18 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView8"
+        android:id="@+id/imgCard"
         android:layout_width="82dp"
         android:layout_height="73dp"
         android:layout_marginStart="68dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView5"
-        app:layout_constraintStart_toStartOf="@+id/imageView5"
-        app:layout_constraintTop_toTopOf="@+id/imageView5"
+        app:layout_constraintBottom_toBottomOf="@+id/imgPeople"
+        app:layout_constraintStart_toStartOf="@+id/imgPeople"
+        app:layout_constraintTop_toTopOf="@+id/imgPeople"
         app:layout_constraintVertical_bias="0.814"
         app:srcCompat="@drawable/transparent" />
 
     <ImageView
-        android:id="@+id/imageView5"
+        android:id="@+id/imgPeople"
         android:layout_width="304dp"
         android:layout_height="283dp"
         android:layout_marginStart="24dp"
@@ -44,7 +44,7 @@
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:srcCompat="@drawable/earthquake" />
+        app:srcCompat="@drawable/twocards" />
 
     <ImageView
         android:id="@+id/imghint"
@@ -59,7 +59,7 @@
         app:layout_constraintVertical_bias="0.875" />
 
     <ImageView
-        android:id="@+id/imageView6"
+        android:id="@+id/imgMe"
         android:layout_width="136dp"
         android:layout_height="198dp"
         android:layout_marginStart="8dp"
@@ -68,7 +68,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5"
+        app:layout_constraintTop_toBottomOf="@+id/imgPeople"
         app:srcCompat="@drawable/a" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
