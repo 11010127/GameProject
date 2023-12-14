@@ -38,6 +38,10 @@ class Game2 : AppCompatActivity(), SensorEventListener {
                     .setPositiveButton("OK") { dialog, which ->
                         Toast.makeText(this, "OK", Toast.LENGTH_LONG).show()
                     }
+                    .setNegativeButton("退出") { dialog, which ->
+                        finish()
+                    }
+                    .show()
             }
             true
         }
@@ -53,7 +57,7 @@ class Game2 : AppCompatActivity(), SensorEventListener {
     }
     override fun onPause() {
         super.onPause()
-        if(!isStarted){
+        if(isStarted){
             isStarted=false
             sensorManager.unregisterListener(this@Game2)
         }
@@ -99,12 +103,15 @@ class Game2 : AppCompatActivity(), SensorEventListener {
                             .setTitle("勝利")
                             .setMessage("我是巧克力冰淇淋...")
                             .setPositiveButton("下一關") { dialog, which ->
-                                Intent(this,Game1::class.java).apply {
+                                Intent(this,Game3::class.java).apply {
                                     startActivity(this)
                                 }
                                 Toast.makeText(this@Game2, "第三關", Toast.LENGTH_LONG).show()
-
                             }
+                            .setNegativeButton("退出") { dialog, which ->
+                                finish()
+                            }
+                            .show()
                     }
                     true
                 }

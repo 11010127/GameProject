@@ -36,12 +36,16 @@ class Game1 : AppCompatActivity(), SensorEventListener {
         binding.img4.setOnTouchListener(failItem)
         binding.imghint.setOnTouchListener { _, event ->
             if (event.action == MotionEvent.ACTION_DOWN) {
-                AlertDialog.Builder(this)
+                AlertDialog.Builder(this@Game1)
                     .setTitle("提示")
                     .setMessage("請搖晃手機")
                     .setPositiveButton("OK") { dialog, which ->
                         Toast.makeText(this, "OK", Toast.LENGTH_LONG).show()
                     }
+                    .setNegativeButton("退出") { dialog, which ->
+                        finish()
+                    }
+                    .show()
             }
             true
         }
@@ -56,7 +60,7 @@ class Game1 : AppCompatActivity(), SensorEventListener {
     }
     override fun onPause() {
         super.onPause()
-        if(!isStarted){
+        if(isStarted){
             isStarted=false
             sensorManager.unregisterListener(this)
         }
@@ -101,7 +105,7 @@ class Game1 : AppCompatActivity(), SensorEventListener {
 
                 binding.img4.setOnTouchListener { _, event ->
                     if (event.action == MotionEvent.ACTION_DOWN) {
-                        AlertDialog.Builder(this)
+                        AlertDialog.Builder(this@Game1)
                             .setTitle("勝利")
                             .setMessage("晃到我跌倒了")
                             .setPositiveButton("下一關") { dialog, which ->
@@ -110,6 +114,10 @@ class Game1 : AppCompatActivity(), SensorEventListener {
                                 }
                                 Toast.makeText(this, "第二關", Toast.LENGTH_LONG).show()
                             }
+                            .setNegativeButton("退出") { dialog, which ->
+                                finish()
+                            }
+                            .show()
                     }
                     true
                 }
