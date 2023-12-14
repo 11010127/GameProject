@@ -45,6 +45,8 @@
             android:layout_height="wrap_content"
             android:text="語音對話"
             android:textAlignment="center"
+            android:backgroundTint="#876B6B"
+            android:drawableTint="#8A3E3E"
             android:textSize="24sp" />
 
         <Space
