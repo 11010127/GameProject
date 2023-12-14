@@ -70,32 +70,61 @@ class Game4 : AppCompatActivity(), SensorEventListener {
     override fun onSensorChanged(p0: SensorEvent?) {
         if (p0?.sensor?.type==Sensor.TYPE_LIGHT){
             if (p0.values[0]>ligmax) ligmax= p0.values[0].toDouble()
+            if(ligmax>800) {
+                ligmax=800.0
+                binding.imageView.setImageResource(R.drawable.bright)
+            }
         }
         if (p0!!.sensor.type==Sensor.TYPE_ACCELEROMETER) {
             val x: Double = (p0.values[0].toDouble() / SensorManager.GRAVITY_EARTH).pow(2.0)
             val y: Double = (p0.values[1].toDouble() / SensorManager.GRAVITY_EARTH).pow(2.0)
             val z: Double = (p0.values[2].toDouble() / SensorManager.GRAVITY_EARTH).pow(2.0)
             val A = sqrt(x + y + z)
-            if (A > max) max = A
+            if (A > 1.2 && ligmax==800.0) {
+                binding.imageView.setImageResource(R.drawable.awake)
+                binding.imageView.setOnTouchListener { _, event ->
+                    if (event.action == MotionEvent.ACTION_DOWN) {
+                        binding.imageView.setImageResource(R.drawable.rise)
+                        binding.imageView.setOnTouchListener { _, event ->
+                            if (event.action == MotionEvent.ACTION_DOWN) {
+                                binding.imageView.setImageResource(R.drawable.near)
+                                binding.imageView.setOnTouchListener { _, event ->
+                                    if (event.action == MotionEvent.ACTION_DOWN) {
+                                        binding.imageView.setImageResource(R.drawable.smash)
+                                        binding.imageView.setOnTouchListener { _, event ->
+                                            if (event.action == MotionEvent.ACTION_DOWN) {
+                                                Intent(this,Game5::class.java).apply {
+                                                    startActivity(this)
+                                                }
+                                            }
+                                            true
+                                        }
+                                    }
+                                    true
+                                }
+                            }
+                            true
+                        }
+                    }
+                    true
+                }
+            }
         }
 
-        if(ligmax>800) {
-            ligmax=800.0
-            binding.imageView.setImageResource(R.drawable.bright)
-        }
+        /*
         if (max > 1.2 && ligmax==800.0) {
             binding.imageView.setImageResource(R.drawable.awake)
+            AA+=1
+        }
+        if (AA>=1){
             binding.imageView.setOnTouchListener { _, event ->
                 if (event.action == MotionEvent.ACTION_DOWN) {
-//                    binding.imageView.setImageResource(R.drawable.)
-                    Intent(this,Game5::class.java).apply {
-                        startActivity(this)
-                    }
-                    Toast.makeText(this@Game4, "第五關", Toast.LENGTH_LONG).show()
+                    binding.imageView.setImageResource(R.drawable.smash)
                 }
                 true
             }
-        }
+        }*/
+
 
     }
 
