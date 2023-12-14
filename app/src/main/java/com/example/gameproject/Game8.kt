@@ -11,6 +11,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.MotionEvent
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.example.gameproject.databinding.ActivityGame8Binding
 
 class Game8 : AppCompatActivity(), SensorEventListener {
@@ -24,11 +25,26 @@ class Game8 : AppCompatActivity(), SensorEventListener {
         setContentView(binding.root)
         sensorManager=getSystemService(Context.SENSOR_SERVICE) as SensorManager
         proSensor= sensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY)!!
-
-
-        binding.img.setOnTouchListener { _, event ->
+        binding.imghint.setOnTouchListener { _, event ->
             if (event.action == MotionEvent.ACTION_DOWN) {
-                Toast.makeText(this@Game8,"錯誤", Toast.LENGTH_LONG).show()
+                AlertDialog.Builder(this)
+                    .setTitle("提示")
+                    .setMessage("1.點選接通電話\n2.將手機靠近耳朵\n3.點選下一關")
+                    .setPositiveButton("OK") { dialog, which ->
+                        Toast.makeText(this, "OK", Toast.LENGTH_LONG).show()
+                    }
+                    .setNegativeButton("退出") { dialog, which ->
+                        finish()
+                    }
+                    .show()
+            }
+            true
+        }
+        binding.imgcall.setOnTouchListener { _, event ->
+            if (event.action == MotionEvent.ACTION_DOWN) {
+                binding.img.setImageResource(R.drawable.connect)
+                binding.imgcall.setImageDrawable(null)
+                binding.imgx.setImageDrawable(null)
             }
             true
         }
@@ -50,20 +66,23 @@ class Game8 : AppCompatActivity(), SensorEventListener {
     }
 
     override fun onSensorChanged(p0: SensorEvent?) {
-        binding.imgcall.setOnTouchListener { _, event ->
-            if (event.action == MotionEvent.ACTION_DOWN) {
-                binding.img.setImageResource(R.drawable.connect)
-                if(p0?.sensor?.type==Sensor.TYPE_PROXIMITY){
-                    if (p0.values[0]<0.1){
-                        binding.img.setImageResource(R.drawable.endofconnection)
+        if(p0?.sensor?.type==Sensor.TYPE_PROXIMITY){
+            if (p0.values[0]<0.1){
+                binding.img.setImageResource(R.drawable.endofconnection)
+                binding.img.setOnTouchListener { _, event ->
+                    if (event.action == MotionEvent.ACTION_DOWN) {
+                        Intent(this,Game1::class.java).apply {
+                            startActivity(this)
+                        }
                     }
+                    true
                 }
             }
-            true
         }
-
-
     }
+
+
+
 
     override fun onAccuracyChanged(p0: Sensor?, p1: Int) {
         //TODO("Not yet implemented")
