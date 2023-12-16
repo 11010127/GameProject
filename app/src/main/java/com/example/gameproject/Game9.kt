@@ -65,6 +65,7 @@ class Game9 : AppCompatActivity(), SensorEventListener {
                     if (event.action == MotionEvent.ACTION_DOWN) {
                         Intent(this,Game10::class.java).apply {
                             startActivity(this)
+                            Log.d("myTag","跳到第十關")
                         }
                     }
                     true
