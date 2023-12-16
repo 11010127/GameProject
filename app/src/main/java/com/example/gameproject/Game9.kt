@@ -20,6 +20,7 @@ class Game9 : AppCompatActivity(), SensorEventListener {
     private lateinit var sensorManager: SensorManager
     private lateinit var gysensor: Sensor
     private var isStarted:Boolean=false
+    private var AA=0.0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding= ActivityGame9Binding.inflate(layoutInflater)
@@ -59,7 +60,10 @@ class Game9 : AppCompatActivity(), SensorEventListener {
     }
     override fun onSensorChanged(p0: SensorEvent?) {
         if(p0?.sensor?.type==Sensor.TYPE_GYROSCOPE){
-            if (Math.abs(p0.values[2])>3.0){
+            if (AA<=40.0) {
+                AA += Math.abs(p0.values[2])
+            }
+            if (AA>=40.0){
                 binding.imageView.setImageResource(R.drawable.handstand)
                 binding.imageView.setOnTouchListener { _, event ->
                     if (event.action == MotionEvent.ACTION_DOWN) {
@@ -71,10 +75,6 @@ class Game9 : AppCompatActivity(), SensorEventListener {
                     true
                 }
             }
-           /* binding.textView.text="X=${p0.values[0]}\n" +
-                    "Y=${p0.values[1]}\n" +
-                    "Z=${p0.values[2]}"
-            Log.d("myTag","X=${p0.values[0]}\nY=${p0.values[0]}\nZ=${p0.values[0]}")*/
         }
     }
 
