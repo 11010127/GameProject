@@ -106,14 +106,6 @@ class Game3 : AppCompatActivity(), LocationListener {
                     Manifest.permission.ACCESS_COARSE_LOCATION
                 ) != PackageManager.PERMISSION_GRANTED
             ) {
-                // TODO: Consider calling
-                //    ActivityCompat#requestPermissions
-                // here to request the missing permissions, and then overriding
-                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                //                                          int[] grantResults)
-                // to handle the case where the user grants the permission. See the documentation
-                // for ActivityCompat#requestPermissions for more details.
-                //return
                 ActivityCompat.requestPermissions(
                     this,
                     arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
@@ -154,7 +146,8 @@ class Game3 : AppCompatActivity(), LocationListener {
          //if(long>-123&&long<-121){
        // if(lat>25&&lat<26){
             //if(long>121&&long<122){
-        if(lat>25.020508162721168&&lat<25.021692944469446&&long>121.46195414533585&&long<121.46530506938743){
+        if(lat>25.02003796061073&&lat<25.02257993300558&&long>121.46224450536772&&long<121.46545539457185){
+//        if(lat>25.020508162721168&&lat<25.021692944469446&&long>121.46195414533585&&long<121.46530506938743){
 
                 //if(long>-123&&long<-121){
                 //  if(lat>37&&lat<38){
