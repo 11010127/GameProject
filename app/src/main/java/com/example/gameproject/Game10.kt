@@ -8,6 +8,7 @@ import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.MotionEvent
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -21,7 +22,7 @@ class Game10 : AppCompatActivity(), SensorEventListener{
     private lateinit var gysensor: Sensor
     private lateinit var lightsensor: Sensor
     private var isStarted:Boolean=false
-    private var AA=0
+    private var count=0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding= ActivityGame10Binding.inflate(layoutInflater)
@@ -64,19 +65,43 @@ class Game10 : AppCompatActivity(), SensorEventListener{
     }
     override fun onSensorChanged(p0: SensorEvent?) {
         if(p0?.sensor?.type==Sensor.TYPE_GYROSCOPE){
-            if (Math.abs(p0.values[2])>2.0&&AA==0){
+            if (Math.abs(p0.values[2])>2.0&&count==0){
                 binding.imageView.setImageResource(R.drawable.watering)
-                AA+=1
+                count+=1
             }
 
-            if (Math.abs(p0.values[2])<0.1&&AA==1){
+            if (Math.abs(p0.values[2])<0.1&&count==1){
                 binding.imageView.setImageResource(R.drawable.greenbuds)
-                AA+=1
+                count+=1
             }
         }
         if (p0?.sensor?.type==Sensor.TYPE_LIGHT){
-            if (p0.values[0]>800&&AA==2){
+            if (p0.values[0]>800&&count==2){
                 binding.imageView.setImageResource(R.drawable.flower)
+                count+=1
+            }
+        }
+        Log.d("myTag","$count")
+        if(count==3) {
+            binding.imageView.setOnTouchListener { _, event ->
+                if (event.action == MotionEvent.ACTION_DOWN) {
+                    binding.imageView.setImageResource(R.drawable.endd)
+                    binding.textView.text="你是天才！"
+                    binding.textView.textSize=55f
+                    count+=1
+                    binding.imghint.setImageDrawable(null)
+                }
+                true
+            }
+        }
+        if (count==4){
+            binding.imageView.setOnTouchListener { _, event ->
+                if (event.action == MotionEvent.ACTION_DOWN) {
+                    Intent(this, MainActivity::class.java).apply {
+                        startActivity(this)
+                    }
+                }
+                true
             }
         }
     }
