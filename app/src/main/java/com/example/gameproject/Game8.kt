@@ -19,7 +19,7 @@ class Game8 : AppCompatActivity(), SensorEventListener {
     private lateinit var sensorManager: SensorManager
     private lateinit var proSensor: Sensor
     private var isStarted:Boolean=false
-    private var AA=0
+    private var count=0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding= ActivityGame8Binding.inflate(layoutInflater)
@@ -46,7 +46,7 @@ class Game8 : AppCompatActivity(), SensorEventListener {
                 binding.img.setImageResource(R.drawable.connect)
                 binding.imgcall.setImageDrawable(null)
                 binding.imgx.setImageDrawable(null)
-                AA+=1
+                count+=1
             }
             true
         }
@@ -69,7 +69,7 @@ class Game8 : AppCompatActivity(), SensorEventListener {
 
     override fun onSensorChanged(p0: SensorEvent?) {
         if(p0?.sensor?.type==Sensor.TYPE_PROXIMITY){
-            if (p0.values[0]<0.1&&AA==1){
+            if (p0.values[0]<0.1&&count==1){
                 binding.img.setImageResource(R.drawable.endofconnection)
                 binding.img.setOnTouchListener { _, event ->
                     if (event.action == MotionEvent.ACTION_DOWN) {

@@ -20,7 +20,7 @@ class Game9 : AppCompatActivity(), SensorEventListener {
     private lateinit var sensorManager: SensorManager
     private lateinit var gysensor: Sensor
     private var isStarted:Boolean=false
-    private var AA=0.0
+    private var gyZ=0.0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding= ActivityGame9Binding.inflate(layoutInflater)
@@ -60,16 +60,15 @@ class Game9 : AppCompatActivity(), SensorEventListener {
     }
     override fun onSensorChanged(p0: SensorEvent?) {
         if(p0?.sensor?.type==Sensor.TYPE_GYROSCOPE){
-            if (AA<=40.0) {
-                AA += Math.abs(p0.values[2])
+            if (gyZ<=40.0) {
+                gyZ += Math.abs(p0.values[2])
             }
-            if (AA>=40.0){
+            if (gyZ>=40.0){
                 binding.imageView.setImageResource(R.drawable.handstand)
                 binding.imageView.setOnTouchListener { _, event ->
                     if (event.action == MotionEvent.ACTION_DOWN) {
                         Intent(this,Game10::class.java).apply {
                             startActivity(this)
-                            Log.d("myTag","跳到第十關")
                         }
                     }
                     true

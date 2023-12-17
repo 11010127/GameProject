@@ -21,8 +21,6 @@ class Game5 : AppCompatActivity(), SensorEventListener {
     private lateinit var sensorManager: SensorManager
     private lateinit var accsensor: Sensor
     private var isStarted:Boolean=false
-    private var max=0.0
-    private var AA=0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding=ActivityGame5Binding.inflate(layoutInflater)

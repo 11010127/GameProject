@@ -24,10 +24,7 @@ class Game4 : AppCompatActivity(), SensorEventListener {
     private lateinit var accsensor: Sensor
     private lateinit var lightsensor: Sensor
     private var isStarted:Boolean=false
-    private var max=0.0
     private var ligmax=0.0
-    private var AA=0
-    private var BB=0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding= ActivityGame4Binding.inflate(layoutInflater)
@@ -110,22 +107,6 @@ class Game4 : AppCompatActivity(), SensorEventListener {
                 }
             }
         }
-
-        /*
-        if (max > 1.2 && ligmax==800.0) {
-            binding.imageView.setImageResource(R.drawable.awake)
-            AA+=1
-        }
-        if (AA>=1){
-            binding.imageView.setOnTouchListener { _, event ->
-                if (event.action == MotionEvent.ACTION_DOWN) {
-                    binding.imageView.setImageResource(R.drawable.smash)
-                }
-                true
-            }
-        }*/
-
-
     }
 
 
