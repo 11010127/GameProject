@@ -77,7 +77,8 @@ class Game10 : AppCompatActivity(), SensorEventListener{
         }
         if (p0?.sensor?.type==Sensor.TYPE_LIGHT){
             if (p0.values[0]>800&&count==2){
-                binding.imageView.setImageResource(R.drawable.flower)
+                binding.imageView.setImageResource(R.drawable.flower2)
+                binding.textView.text="請點選看勝利結局"
                 count+=1
             }
         }

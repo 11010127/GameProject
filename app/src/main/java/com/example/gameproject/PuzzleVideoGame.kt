@@ -4,11 +4,6 @@ import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.view.View
-import android.widget.Toast
-import androidx.core.content.ContextCompat
-import androidx.core.content.ContextCompat.startActivity
 import com.example.gameproject.databinding.ActivityPuzzleVideoGameBinding
 
 class PuzzleVideoGame : AppCompatActivity() {
@@ -79,14 +74,14 @@ class PuzzleVideoGame : AppCompatActivity() {
             }
         }
         binding.btn8.setOnClickListener {
-            Intent(this,Game8::class.java).apply {
+            Intent(this,Game9::class.java).apply {
                 startActivity(this)
                 binding.btn8.setBackgroundColor(Color.RED)
                 binding.btn9.isEnabled=true
             }
         }
         binding.btn9.setOnClickListener {
-            Intent(this,Game9::class.java).apply {
+            Intent(this,Game8::class.java).apply {
                 startActivity(this)
                 binding.btn9.setBackgroundColor(Color.RED)
                 binding.btn10.isEnabled=true

@@ -18,10 +18,10 @@
             android:name=".Game10"
             android:exported="false" />
         <activity
-            android:name=".Game9"
+            android:name=".Game8"
             android:exported="false" />
         <activity
-            android:name=".Game8"
+            android:name=".Game9"
             android:exported="false" />
         <activity
             android:name=".Game7"
