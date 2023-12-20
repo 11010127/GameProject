@@ -74,14 +74,14 @@ class PuzzleVideoGame : AppCompatActivity() {
             }
         }
         binding.btn8.setOnClickListener {
-            Intent(this,Game9::class.java).apply {
+            Intent(this,Game8::class.java).apply {
                 startActivity(this)
                 binding.btn8.setBackgroundColor(Color.RED)
                 binding.btn9.isEnabled=true
             }
         }
         binding.btn9.setOnClickListener {
-            Intent(this,Game8::class.java).apply {
+            Intent(this,Game9::class.java).apply {
                 startActivity(this)
                 binding.btn9.setBackgroundColor(Color.RED)
                 binding.btn10.isEnabled=true

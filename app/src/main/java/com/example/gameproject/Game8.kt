@@ -66,7 +66,7 @@ class Game8 : AppCompatActivity(), SensorEventListener {
                 binding.imageView.setImageResource(R.drawable.handstand2)
                 binding.imageView.setOnTouchListener { _, event ->
                     if (event.action == MotionEvent.ACTION_DOWN) {
-                        Intent(this,Game10::class.java).apply {
+                        Intent(this,Game9::class.java).apply {
                             startActivity(this)
                         }
                     }
