@@ -21,6 +21,7 @@ class Game5 : AppCompatActivity(), SensorEventListener {
     private lateinit var sensorManager: SensorManager
     private lateinit var accsensor: Sensor
     private var isStarted:Boolean=false
+    private var count=0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding=ActivityGame5Binding.inflate(layoutInflater)
@@ -65,23 +66,25 @@ class Game5 : AppCompatActivity(), SensorEventListener {
             val y:Double=(p0.values[1].toDouble()/SensorManager.GRAVITY_EARTH).pow(2.0)
             val z:Double=(p0.values[2].toDouble()/SensorManager.GRAVITY_EARTH).pow(2.0)
             val A= sqrt(x+y+z)
-            if (A>1.5){
+            if (A>1.5 && count==0){
                 binding.imgPeople.setImageResource(R.drawable.earthquake)
-                binding.imgCard.setOnTouchListener { _, event ->
-                    if (event.action == MotionEvent.ACTION_DOWN) {
-                        binding.imgPeople.setImageResource(R.drawable.onecards)
-                        binding.imgMe.setImageResource(R.drawable.endcard)
-                        binding.imgMe.setOnTouchListener { _, even ->
-                            if (event.action==MotionEvent.ACTION_DOWN){
-                                Intent(this,Game6::class.java).apply {
-                                    startActivity(this)
-                                }
+                count=1
+            }
+
+            binding.imgCard.setOnTouchListener { _, event ->
+                if (event.action == MotionEvent.ACTION_DOWN && count==1) {
+                    binding.imgPeople.setImageResource(R.drawable.onecards)
+                    binding.imgMe.setImageResource(R.drawable.endcard)
+                    binding.imgMe.setOnTouchListener { _, even ->
+                        if (event.action==MotionEvent.ACTION_DOWN){
+                            Intent(this,Game6::class.java).apply {
+                                startActivity(this)
                             }
-                            true
                         }
+                        true
                     }
-                    true
                 }
+                true
             }
         }
     }
