@@ -25,6 +25,7 @@ class Game4 : AppCompatActivity(), SensorEventListener {
     private lateinit var lightsensor: Sensor
     private var isStarted:Boolean=false
     private var ligmax=0.0
+    private var count=0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding= ActivityGame4Binding.inflate(layoutInflater)
@@ -50,7 +51,7 @@ class Game4 : AppCompatActivity(), SensorEventListener {
     }
     override fun onResume() {
         super.onResume()
-        if(!isStarted){
+        if(!isStarted){ //!=不  //isStarted=falst  =true   false  --- true
             isStarted=true
             sensorManager.registerListener(this,accsensor,SensorManager.SENSOR_DELAY_UI)
             sensorManager.registerListener(this,lightsensor, SensorManager.SENSOR_DELAY_UI)
@@ -59,7 +60,7 @@ class Game4 : AppCompatActivity(), SensorEventListener {
     }
     override fun onPause() {
         super.onPause()
-        if(isStarted){
+        if(isStarted){  //true  --- false
             isStarted=false
             sensorManager.unregisterListener(this)
         }
@@ -67,8 +68,8 @@ class Game4 : AppCompatActivity(), SensorEventListener {
     override fun onSensorChanged(p0: SensorEvent?) {
         if (p0?.sensor?.type==Sensor.TYPE_LIGHT){
             if (p0.values[0]>ligmax) ligmax= p0.values[0].toDouble()
-            if(ligmax>800) {
-                ligmax=800.0
+            if(ligmax>800 && count==0) {
+                count=1
                 binding.imageView.setImageResource(R.drawable.bright)
             }
         }
@@ -77,19 +78,24 @@ class Game4 : AppCompatActivity(), SensorEventListener {
             val y: Double = (p0.values[1].toDouble() / SensorManager.GRAVITY_EARTH).pow(2.0)
             val z: Double = (p0.values[2].toDouble() / SensorManager.GRAVITY_EARTH).pow(2.0)
             val A = sqrt(x + y + z)
-            if (A > 1.5 && ligmax==800.0) {
+            if (A > 1.5 && count==1) {
                 binding.imageView.setImageResource(R.drawable.awake)
+                count=2
                 binding.imageView.setOnTouchListener { _, event ->
-                    if (event.action == MotionEvent.ACTION_DOWN) {
+                    if (event.action == MotionEvent.ACTION_DOWN && count==2) {
+                        //binding.textView.text="$AB"
                         binding.imageView.setImageResource(R.drawable.rise)
+                        count=3
                         binding.imageView.setOnTouchListener { _, event ->
-                            if (event.action == MotionEvent.ACTION_DOWN) {
+                            if (event.action == MotionEvent.ACTION_DOWN && count==3) {
                                 binding.imageView.setImageResource(R.drawable.near)
+                                count=4
                                 binding.imageView.setOnTouchListener { _, event ->
-                                    if (event.action == MotionEvent.ACTION_DOWN) {
+                                    if (event.action == MotionEvent.ACTION_DOWN && count==4) {
                                         binding.imageView.setImageResource(R.drawable.smash)
+                                        count=5
                                         binding.imageView.setOnTouchListener { _, event ->
-                                            if (event.action == MotionEvent.ACTION_DOWN) {
+                                            if (event.action == MotionEvent.ACTION_DOWN && count==5) {
                                                 Intent(this,Game5::class.java).apply {
                                                     startActivity(this)
                                                 }
