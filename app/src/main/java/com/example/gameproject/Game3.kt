@@ -22,6 +22,7 @@ class Game3 : AppCompatActivity(), LocationListener {
     private lateinit var locationManager: LocationManager
     private var hasGPS: Boolean = false
     private var hasNetwork: Boolean = false
+    private var count=0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding= ActivityGame3Binding.inflate(layoutInflater)
@@ -140,37 +141,27 @@ class Game3 : AppCompatActivity(), LocationListener {
         var lat=p0.latitude.toString().toDouble()
         var long=p0.longitude.toString().toDouble()
         Log.d("myTag", "??"+p0.latitude.toString()+p0.longitude.toString())
-//        緯度範圍：25.021055628076443 到 25.02121638064911
-//        經度範圍：121.46517663348575 到 121.46522059134752
-        //if(lat>37&&lat<38){
-         //if(long>-123&&long<-121){
-       // if(lat>25&&lat<26){
-            //if(long>121&&long<122){
-        if(lat>25.02003796061073&&lat<25.02257993300558&&long>121.46224450536772&&long<121.46545539457185){
-//        if(lat>25.020508162721168&&lat<25.021692944469446&&long>121.46195414533585&&long<121.46530506938743){
-
-                //if(long>-123&&long<-121){
-                //  if(lat>37&&lat<38){
-                //binding3.textView.text=p0.latitude.toString()+p0.longitude.toString()
-                binding.imageView.setImageResource(R.drawable.glasses)
-                binding.textView.text="請點擊找到的眼鏡"
-                binding.imageView.setOnTouchListener { _, event ->
-                    if (event.action == MotionEvent.ACTION_DOWN) {
-                        binding.imageView.setImageResource(R.drawable.glassesgirl2)
-                        binding.textView.text="哇！謝謝你！"
-                        binding.imageView.setOnTouchListener { _, event ->
-                            if (event.action == MotionEvent.ACTION_DOWN) {
-                                Intent(this,Game4::class.java).apply {
-                                    startActivity(this)
-                                }
-                                Toast.makeText(this@Game3, "第四關", Toast.LENGTH_LONG).show()
-
+        if(lat>25.02003796061073&&lat<25.02257993300558&&long>121.46224450536772&&long<121.46545539457185&&count==0){
+            binding.imageView.setImageResource(R.drawable.glasses)
+            binding.textView.text="請點擊找到的眼鏡"
+            count=1
+            binding.imageView.setOnTouchListener { _, event ->
+                if (event.action == MotionEvent.ACTION_DOWN && count==1) {
+                    binding.imageView.setImageResource(R.drawable.glassesgirl2)
+                    binding.textView.text="哇！謝謝你！"
+                    binding.imageView.setOnTouchListener { _, event ->
+                        if (event.action == MotionEvent.ACTION_DOWN) {
+                            Intent(this,Game4::class.java).apply {
+                                startActivity(this)
                             }
-                            true
+                            Toast.makeText(this@Game3, "第四關", Toast.LENGTH_LONG).show()
+
                         }
+                        true
                     }
-                    true
                 }
+                true
+            }
 
         }
 
